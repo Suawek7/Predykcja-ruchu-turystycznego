@@ -55,15 +55,7 @@
 						<section id="content">
 							<a href="#" class="image fit"><img src="{% static 'App/images/pic07.jpg' %}" /></a>
 
-                        {% block content %}
-
-                            <form method="POST" action="index" >
-                            {% csrf_token %}
-                            {{ form }}
-                            <input type="submit" value="Zobacz predykcję!">
-                            </form>
-
-                        {% endblock %}
+                            <p>Obiążenie ruchu: </p>
 
 						</section>
 				</div>

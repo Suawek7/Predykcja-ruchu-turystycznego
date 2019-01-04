@@ -20,8 +20,8 @@ class TStat14(models.Model):
     xii = models.IntegerField(default=0)
 #   pub_date = models.DateTimeField('date published')
 
- #   def __str__(self):
-      # return "Województwo: " + self.province + " Ilość:" + str(self.all)
+    def __str__(self):
+       return "Województwo: " + self.province + " Ilość:" + str(self.all)
 
 
 class TStat15(models.Model):
