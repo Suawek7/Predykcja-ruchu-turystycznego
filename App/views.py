@@ -45,4 +45,6 @@ def result(request):
     print(month_from)
     print(month_to)
 
+
+
     return render(request, 'App/result.html')
