@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
-from matplotlib import pyplot as plt
+
 import numpy as np
 import random
 import math
