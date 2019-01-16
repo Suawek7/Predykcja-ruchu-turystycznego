@@ -1,7 +1,10 @@
 {% load static %}
 {% block extrahead %}
     <link rel="stylesheet" type="text/css" href="{% static 'App/css/style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'App/css/style-xlarge.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'App/css/style-large.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'App/css/bootstrap.css' %}" />
+    <script src="{% static 'App/js/highcharts.src.js' %}"></script>
+
 {% endblock %}
 
 <!DOCTYPE HTML>
@@ -17,30 +20,7 @@
 
 		<!-- Header -->
 			<header id="header" class="skel-layers-fixed">
-			<h1><a href="index.html">HTML5 Website <span>by Html5webtemplates.co.uk</span></a></h1>
-				<nav id="nav">
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li>
-							<a href="" class="icon fa-angle-down">Layouts</a>
-							<ul>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="no-sidebar.html">No Sidebar</a></li>
-								<li>
-									<a href="">Submenu</a>
-									<ul>
-										<li><a href="#">Option 1</a></li>
-										<li><a href="#">Option 2</a></li>
-										<li><a href="#">Option 3</a></li>
-										<li><a href="#">Option 4</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="elements.html">Elements</a></li>
-					</ul>
-				</nav>
+			<h1><a href="/">Predykcja <span>Ruchu Turystycznego</span></a></h1>
 			</header>
 
 		<!-- Main -->
@@ -60,7 +40,8 @@
                             <form method="POST" action="index" >
                             {% csrf_token %}
                             {{ form }}
-                            <input type="submit" value="Zobacz predykcję!">
+
+                            <input style="margin-top: 10px;" type="submit" value="Zobacz predykcję!"/>
                             </form>
 
                         {% endblock %}
@@ -69,24 +50,15 @@
 				</div>
 			</section>
 
-		<!-- Footer -->
+    <!-- Footer -->
 			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-					<li><a href="#" class="icon fa-envelope"><span class="label">Envelope</span></a></li>
-				</ul>
-				<ul class="menu">
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">Terms of Use</a></li>
-					<li><a href="#">Privacy</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-				<span class="copyright">
-			&copy; Copyright. All rights reserved. Design by <a href="http://www.html5webtemplates.co.uk">Responsive Web Templates</a>
-				</span>
+                <span class="copyright">
+                    &copy; Copyright. All rights reserved. Design by
+                    <span style="color: red">Sławomir Niedbała</span>,
+                    <span style="color: blue">Mateusz Maciąg</span>,
+                    <span style="color: green">Artur Pilch</span>,
+                    <span style="color: orange">Magda Ważna</span>
+                </span>
 			</footer>
 
 	</body>

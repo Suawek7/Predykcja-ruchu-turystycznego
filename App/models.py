@@ -20,8 +20,8 @@ class TStat14(models.Model):
     xii = models.IntegerField(default=0)
 #   pub_date = models.DateTimeField('date published')
 
-    def __str__(self):
-       return "Województwo: " + self.province + " Ilość:" + str(self.all)
+    #def __str__(self):
+    #   return "Województwo: " + self.province + " Ilość:" + str(self.all)
 
 
 class TStat15(models.Model):
@@ -40,8 +40,8 @@ class TStat15(models.Model):
     xi = models.IntegerField(default=0)
     xii = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.province + " " + str(self.all)
+    #def __str__(self):
+    #    return self.province + " " + str(self.all)
 
 
 class TStat16(models.Model):
@@ -60,8 +60,8 @@ class TStat16(models.Model):
     xi = models.IntegerField(default=0)
     xii = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.province + " " + str(self.all)
+    #def __str__(self):
+   #     return self.province + " " + str(self.all)
 
 
 class TStat17(models.Model):
@@ -80,5 +80,5 @@ class TStat17(models.Model):
     xi = models.IntegerField(default=0)
     xii = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.province + " " + str(self.all)
+    #def __str__(self):
+    #    return self.province + " " + str(self.all)

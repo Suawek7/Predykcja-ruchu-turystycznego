@@ -1,7 +1,10 @@
 {% load static %}
 {% block extrahead %}
     <link rel="stylesheet" type="text/css" href="{% static 'App/css/style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'App/css/style-xlarge.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'App/css/style-large.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'App/css/bootstrap.css' %}" />
+    <script src="{% static 'App/js/highcharts.src.js' %}"></script>
+
 {% endblock %}
 
 <!DOCTYPE HTML>
@@ -13,34 +16,11 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 	</head>
-	<body>
+	<div>
 
 		<!-- Header -->
 			<header id="header" class="skel-layers-fixed">
-			<h1><a href="index.html">HTML5 Website <span>by Html5webtemplates.co.uk</span></a></h1>
-				<nav id="nav">
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li>
-							<a href="" class="icon fa-angle-down">Layouts</a>
-							<ul>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="no-sidebar.html">No Sidebar</a></li>
-								<li>
-									<a href="">Submenu</a>
-									<ul>
-										<li><a href="#">Option 1</a></li>
-										<li><a href="#">Option 2</a></li>
-										<li><a href="#">Option 3</a></li>
-										<li><a href="#">Option 4</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="elements.html">Elements</a></li>
-					</ul>
-				</nav>
+			<h1><a href="/">Predykcja <span>Ruchu Turystycznego</span></a></h1>
 			</header>
 
 		<!-- Main -->
@@ -55,30 +35,104 @@
 						<section id="content">
 							<a href="#" class="image fit"><img src="{% static 'App/images/pic07.jpg' %}" /></a>
 
-                            <p>Obiążenie ruchu: </p>
+{#                            <p>Obiążenie ruchu: </p>#}
+{#                            {{ data14Values }}#}
+{#                            <br />#}
+{##}
+{#                             {% for item in data14Values %}#}
+{##}
+{#                                 {{ item.0 }}#}
+{##}
+{##}
+{#                            {% endfor %}#}
+                        <br />
 
 						</section>
 				</div>
 			</section>
+<div id="container">
+    <script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Predykcja'
+        },
+        xAxis: {
+            categories: {{ miesiac }}
+        },
+        series: [{
+            name: 'Rok 2014',
+            data: [
+                {% for item in data14Values %}
 
-		<!-- Footer -->
+                                 {{ item.0 }} ,
+
+
+                            {% endfor %}
+            ]
+        }, {
+            name: 'Rok 2015',
+            data: [
+                 {% for item in data14Values %}
+
+                                 {{ item.1 }} ,
+
+
+                            {% endfor %}
+             ]
+        }, {
+            name: 'Rok 2016',
+            data: [
+                {% for item in data14Values %}
+
+                                 {{ item.2 }} ,
+
+
+                            {% endfor %}
+            ]
+        },
+        {
+            name: 'Rok 2017',
+            data: [
+                {% for item in data14Values %}
+
+                                 {{ item.3 }} ,
+
+
+                            {% endfor %}
+            ]
+        },
+         {
+            name: 'Rok 2017 Predykcja',
+            data: [
+                {% for item in data14Values %}
+
+                                 {{ item.4 }} ,
+
+
+                            {% endfor %}
+            ]
+        }
+
+        ]
+    });
+  </script>
+
+
+</div>
+
+    </div>
+        <!-- Footer -->
 			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-					<li><a href="#" class="icon fa-envelope"><span class="label">Envelope</span></a></li>
-				</ul>
-				<ul class="menu">
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">Terms of Use</a></li>
-					<li><a href="#">Privacy</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-				<span class="copyright">
-			&copy; Copyright. All rights reserved. Design by <a href="http://www.html5webtemplates.co.uk">Responsive Web Templates</a>
-				</span>
+                <span class="copyright">
+                    &copy; Copyright. All rights reserved. Design by
+                    <span style="color: red">Sławomir Niedbała</span>,
+                    <span style="color: blue">Mateusz Maciąg</span>,
+                    <span style="color: green">Artur Pilch</span>,
+                    <span style="color: orange">Magda Ważna</span>
+                </span>
 			</footer>
 
 	</body>

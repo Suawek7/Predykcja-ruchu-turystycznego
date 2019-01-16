@@ -112,6 +112,7 @@ def result(request):
     ]
 
     arrayLearnValues = []
+    data14Values = []
 
     for month in range(monthbegin, (monthend + 1)):
         learnValues = []
@@ -120,38 +121,32 @@ def result(request):
             res = x[key]
             learnValues.append(res)
         arrayLearnValues.append(learnValues)
-        print(arrayLearnValues)
+        data14Values.append(learnValues)
+
+    def funkcja(index):
+        data14Values[index].append(predicted_value)
 
     costs, w1, w2, w3, b = train(arrayLearnValues)
-
-    data_for_charts = []
-
-    #fig = plt.plot(costs)
+    index = 0
     for value in arrayLearnValues:
         data_to_pred_from = value[0:3]
         predicted_value = abs(w1 * data_to_pred_from[0] + w2 * data_to_pred_from[1] + w3 * data_to_pred_from[2] + b)
-        print("Statistic value  "
-              "2014:" + str(value[0]) + "\n" +
-              "2015: " + str(value[1]) + "\n" +
-              "2016: " + str(value[2]) + "\n" +
-              "2017: " + str(value[3]) + "\n" +
-              "Predicted value for 2017: " +
-              str(predicted_value))
-         data_for_charts.append(value[0], value[1], value[2], value[3], predicted_value)
+        funkcja(index)
+        index = index + 1
 
+    miesiac = []
 
+    for monthToPlot in range(monthbegin, (monthend+1)):
+        miesiac.append(monthToPlot)
 
-
-
-
-    return render(request, 'App/result.html')
-
-    # return render(request, 'App/result.html')
+    return render(request, 'App/result.html',
+                  {'miesiac': miesiac, 'data14Values': data14Values})
 
 
 def getValuesFromRomeSigns(value):
     values = getValues()
     return values[value]
+
 
 def getValues():
     return {
@@ -168,6 +163,7 @@ def getValues():
         'xi': 11,
         'xii': 12,
     }
+
 
 def getKey(value):
 
