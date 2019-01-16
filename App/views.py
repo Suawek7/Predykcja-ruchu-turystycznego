@@ -1,25 +1,10 @@
-from django.shortcuts import render
-from django.conf import settings
-from matplotlib import pyplot as plt
 import numpy as np
 import random
-import math
 from django.shortcuts import render
-from django.contrib import messages
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
-
-# Create your views here.
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
-from django.template import loader
 from .models import TStat14
 from .models import TStat15
 from .models import TStat16
 from .models import TStat17
-from django.urls import reverse
-from django.core import serializers
 from django.shortcuts import redirect
 from .forms import SelectProvince_Months_Form
 
@@ -148,20 +133,7 @@ def result(request):
         funkcja(index)
         index = index + 1
 
-
-        # print("Statistic value  "
-        #       "2014:" + str(value[0]) + "\n" +
-        #       "2015: " + str(value[1]) + "\n" +
-        #       "2016: " + str(value[2]) + "\n" +
-        #       "2017: " + str(value[3]) + "\n" +
-        #       "Predicted value for 2017: " +
-        #       str(predicted_value)
-        #       )
-
-    #make only months
-
     miesiac = []
-    monthToPlot = monthbegin
 
     for monthToPlot in range(monthbegin, (monthend+1)):
         miesiac.append(monthToPlot)
@@ -170,11 +142,8 @@ def result(request):
     for k in data14Values:
         print(k)
 
-
-
     return render(request, 'App/result.html',
                   {'miesiac': miesiac, 'data14Values': data14Values})
-
 
 
 def getValuesFromRomeSigns(value):
