@@ -59,6 +59,16 @@
 							<a href="#" class="image fit"><img src="{% static 'App/images/pic07.jpg' %}" /></a>
 
                             <p>Obiążenie ruchu: </p>
+                            {{ data14Values }}
+                            <br />
+
+                             {% for item in data14Values %}
+
+                                 {{ item.0 }}
+
+
+                            {% endfor %}
+                        <br />
 
 						</section>
 				</div>
@@ -71,21 +81,66 @@
             type: 'column'
         },
         title: {
-            text: '{{ data1.province }}'
+            text: 'Wykres'
         },
         xAxis: {
-            categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiacień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
+            categories: {{ miesiac }}
         },
         series: [{
             name: 'Rok 2014',
-            data: [107, 31, 635, 203, 999,12,333,4444,555,6666,777,888]
+            data: [
+                {% for item in data14Values %}
+
+                                 {{ item.0 }} ,
+
+
+                            {% endfor %}
+            ]
         }, {
             name: 'Rok 2015',
-             data: [1011,222,333,444]
+             data: [
+                 {% for item in data14Values %}
+
+                                 {{ item.1 }} ,
+
+
+                            {% endfor %}
+             ]
         }, {
             name: 'Rok 2016',
-            data: [1052, 954, 4250, 740, 38]
-        }]
+            data: [
+                {% for item in data14Values %}
+
+                                 {{ item.2 }} ,
+
+
+                            {% endfor %}
+            ]
+        },
+        {
+            name: 'Rok 2017',
+            data: [
+                {% for item in data14Values %}
+
+                                 {{ item.3 }} ,
+
+
+                            {% endfor %}
+            ]
+        },
+         {
+            name: 'Rok 2017 Predykcja',
+            data: [
+                {% for item in data14Values %}
+
+                                 {{ item.4 }} ,
+
+
+                            {% endfor %}
+            ]
+        }
+
+        ]
     });
   </script>
 

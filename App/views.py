@@ -104,6 +104,7 @@ def index(request):
     return render(request, 'App/index.html', {'form': form})
 
 
+
 def result(request):
 
     data_provinces = request.session.get('provinces')
@@ -124,6 +125,7 @@ def result(request):
     ]
 
     arrayLearnValues = []
+    data14Values = []
 
     for month in range(monthbegin, (monthend + 1)):
         learnValues = []
@@ -132,36 +134,46 @@ def result(request):
             res = x[key]
             learnValues.append(res)
         arrayLearnValues.append(learnValues)
+        data14Values.append(learnValues)
+
+    def funkcja(index):
+        data14Values[index].append(predicted_value)
 
     costs, w1, w2, w3, b = train(arrayLearnValues)
-
+    index = 0
     #fig = plt.plot(costs)
     for value in arrayLearnValues:
         data_to_pred_from = value[0:3]
         predicted_value = abs(w1 * data_to_pred_from[0] + w2 * data_to_pred_from[1] + w3 * data_to_pred_from[2] + b)
-        print("Statistic value  "
-              "2014:" + str(value[0]) + "\n" +
-              "2015: " + str(value[1]) + "\n" +
-              "2016: " + str(value[2]) + "\n" +
-              "2017: " + str(value[3]) + "\n" +
-              "Predicted value for 2017: " +
-              str(predicted_value)
-              )
+        funkcja(index)
+        index = index + 1
 
-    data14 = TStat14.objects.filter(id=data_provinces).values().get()
-    data15 = TStat15.objects.filter(id=data_provinces).values().get()
-    data16 = TStat16.objects.filter(id=data_provinces).values().get()
-    data17 = TStat17.objects.filter(id=data_provinces).values().get()
+
+        # print("Statistic value  "
+        #       "2014:" + str(value[0]) + "\n" +
+        #       "2015: " + str(value[1]) + "\n" +
+        #       "2016: " + str(value[2]) + "\n" +
+        #       "2017: " + str(value[3]) + "\n" +
+        #       "Predicted value for 2017: " +
+        #       str(predicted_value)
+        #       )
 
     #make only months
 
     miesiac = []
+    monthToPlot = monthbegin
+
+    for monthToPlot in range(monthbegin, (monthend+1)):
+        miesiac.append(monthToPlot)
+
+    print("Moja wartosc")
+    for k in data14Values:
+        print(k)
 
 
 
-
-
-    return render(request, 'App/result.html', {'data14': data14, 'data15': data15, 'data16': data16, 'data17': data17})
+    return render(request, 'App/result.html',
+                  {'miesiac': miesiac, 'data14Values': data14Values})
 
 
 
