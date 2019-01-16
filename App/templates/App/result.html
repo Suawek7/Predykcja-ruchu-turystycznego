@@ -1,7 +1,10 @@
 {% load static %}
 {% block extrahead %}
     <link rel="stylesheet" type="text/css" href="{% static 'App/css/style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'App/css/style-xlarge.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'App/css/style-large.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'App/css/bootstrap.css' %}" />
+    <script src="{% static 'App/js/highcharts.src.js' %}"></script>
+
 {% endblock %}
 
 <!DOCTYPE HTML>
@@ -13,7 +16,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 	</head>
-	<body>
+	<div>
 
 		<!-- Header -->
 			<header id="header" class="skel-layers-fixed">
@@ -60,6 +63,36 @@
 						</section>
 				</div>
 			</section>
+
+<div id="container">
+    <script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '{{ data1.province }}'
+        },
+        xAxis: {
+            categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiacień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
+        },
+        series: [{
+            name: 'Rok 2014',
+            data: [107, 31, 635, 203, 999,12,333,4444,555,6666,777,888]
+        }, {
+            name: 'Rok 2015',
+             data: [1011,222,333,444]
+        }, {
+            name: 'Rok 2016',
+            data: [1052, 954, 4250, 740, 38]
+        }]
+    });
+  </script>
+
+
+</div>
+
+    </div>
 
 		<!-- Footer -->
 			<footer id="footer">

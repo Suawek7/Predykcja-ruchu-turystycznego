@@ -2,24 +2,14 @@ from django.shortcuts import render
 from django.conf import settings
 from matplotlib import pyplot as plt
 import numpy as np
-from sklearn.linear_model import LogisticRegression
-from sklearn.datasets.samples_generator import make_blobs
-import numpy as np
 import random
-import pandas as pd
 import math
-import preprocessing
-from sklearn.datasets import load_iris
-from sklearn.neural_network import MLPClassifier
-from sklearn.linear_model import Perceptron
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-import pandas as pd
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn import svm
-from sklearn import datasets
+
+
 # Create your views here.
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -29,7 +19,6 @@ from .models import TStat15
 from .models import TStat16
 from .models import TStat17
 from django.urls import reverse
-import numpy
 from django.core import serializers
 from django.shortcuts import redirect
 from .forms import SelectProvince_Months_Form
@@ -159,19 +148,21 @@ def result(request):
               str(predicted_value)
               )
 
-#------------------------
+    data14 = TStat14.objects.filter(id=data_provinces).values().get()
+    data15 = TStat15.objects.filter(id=data_provinces).values().get()
+    data16 = TStat16.objects.filter(id=data_provinces).values().get()
+    data17 = TStat17.objects.filter(id=data_provinces).values().get()
 
-    #df = TStat15.objects.all().values()
-    #print(df)
+    #make only months
 
-#---------
-
+    miesiac = []
 
 
 
-    return render(request, 'App/index.html')
 
-    # return render(request, 'App/result.html')
+
+    return render(request, 'App/result.html', {'data14': data14, 'data15': data15, 'data16': data16, 'data17': data17})
+
 
 
 def getValuesFromRomeSigns(value):
